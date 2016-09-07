@@ -1,96 +1,48 @@
-# cadvisor-collectd
+# docker-metrics-collector
 
-Collecting host and container metrics using [CAdvisor](https://registry.hub.docker.com/u/google/cadvisor/) and [Collectd](https://github.com/collectd/collectd/).
+Collect Docker host, container, and application metrics and push to your destination of choice using [CAdvisor](https://github.com/google/cadvisor) and [Collectd](https://github.com/collectd/collectd).  Based on the work of [Matt Maier](https://github.com/maier).
 
-Status: [docker registry](https://registry.hub.docker.com/u/maier/cadvisor-collectd/)
+## Problem
 
+* Collect metrics from hosts, containers, and applications exposing metrics.
+* Send metrics to a variety of external services simultaneously (e.g. metric backends like InfluxDB or Graphite, monitoring services like Librato).
+* Run effetively in a container, not on the host system.
+* Minimal configuration and sane out-of-box defaults.
 
-# Problem
-
-* Collect metrics from host system, running containers, and processes exposing metrics running in containers.
-* Send metrics to multiple external (from host) systems simultaneously.
-* Run in a container, not on the host system.
-
-
-# Solution
+## Solution
 
 ### Collectd and CAdvisor
 
-1. Low adoption friction -- Collectd is already in-place as the solution for metrics collection and transport [where I work].
-1. Flexibility, Collectd
-   * Offers large number of plugins to support collection of metrics.
-   * Various options for creating custom metrics collectors.
-   * Offers a large number of plugins to send metrics to various external systems.
-   * Collectd's native transport is supported by many such systems.
-1. CAdvisor
-   * Collectd has no inherent capability to inspect the host system [from a container] nor other containers.
-   * Exposes host system and container metrics via an API which can be easily leveraged.
-   * Offers near real-time visibility into a running system, if exposed, providing a powerful interactive troubleshooting tool.
+1. Low barrier of entry
+   * Collectd is a well-known, widely-used, and familiar monitoring/metrics collection tool.
+1. Flexibility (Collectd)
+   * Offers a wide variety of "input" and "output" plugins.
+   * Provides a framework for implementing custom metrics collectors.
+   * Collectd's native transport is supported by many monitoring services and metrics backends.
+1. Container Support (CAdvisor)
+   * Exposes host, container, and application metrics via a well-supported API.
+   * Provides out-of-box container discovery.
+   * Offers a framework for publishing application metrics.
+   * Offers near-real-time visibility into a running system, providing a powerful interactive troubleshooting tool.
 
-
-### Drawbacks
+## Drawbacks
 
 1. It is a more complex solution, with complexity comes fragility.
 1. CAdvisor adds additional load to a system.
 
-As alternatives surface they will be investigated from the perspective of simplifying the overall solution and reducing load on the host system.
-
-# Features
+## Features
 
 * Leverage Collectd's wealth of plugins
-* Leveage CAdvisor's ability to see the *Host* as well as the *Containers*
+* Leveage CAdvisor's ability to see the *Host* as well as the *Containers* and *Applications*
 * Runs in a separate container (not as a 1st class process on the Host)
 * Has built-in metrics collectors for:
    * Host
    * Containers
+   * Applications
    * Mesos
-* Easy to use...which is, of course, relative and subjective :)
+* Trivial to get started - sane defaults and minimal configuration
 * Basic metric name manipulation for metric continuity
 
-# Getting started
+## Getting Started
 
-Refer to the repository wiki for [complete documentation](https://github.com/maier/cadvisor-collectd/wiki) on all of the configuration options, as well as, more details on using the cadvisor-collectd container. For a quick start, see the **examples** directory for turnkey demonstrations using CSV, InfluxDB, or Graphite.
-
-
-## On deck
-
-- [x] add mesos metrics collection plugin for Collectd
-- [x] refactor cadvisor and mesos -- provide both command line and plugin capabilities
-- [x] add service filter modes to cadvisor
-    - [x] group options
-        - [x] mounts
-        - [x] sockets
-        - [x] docker scopes
-        - [x] user slice
-        - [x] system slice
-        - [x] other slices
-    - [x] service options
-        - [x] all
-        - [x] include -- implicit exclusion, explicit inclusion
-        - [x] exclude -- implicit inclusion, explicit exclusion
-- [x] rewirte and reorganize documentation
-    - [x] introduction
-    - [x] configuring collectd
-    - [x] configuring cadvisor plugin
-    - [x] configuring mesos plugin
-    - [x] add quick start to README
-        - [x] csv
-        - [x] graphite
-        - [x] influxdb
-    - [x] add quickstart demo examples
-    	-  [x] csv
-    	-  [x] influxdb
-    	-  [x] graphite 
-- [ ] ansible playbook
-    - [ ] cadvisor service
-    - [ ] cadvisor-collectd service
-    - [ ] configure collectd
-    - [ ] configure cadvisor plugin
-    - [ ] configure mesos plugin
-- [ ] options for metric source (for docker containers)
-    - [ ] Docker
-    - [ ] CAdvisor
-- [ ] configuration sources
-    - [ ] consul
-    - [ ] etcd
-        - [ ] confd
+## Version History
