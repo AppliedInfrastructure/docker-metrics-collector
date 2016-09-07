@@ -25,11 +25,6 @@ Collect Docker host, container, and application metrics and push to your destina
    * Offers a framework for publishing application metrics.
    * Offers near-real-time visibility into a running system, providing a powerful interactive troubleshooting tool.
 
-## Drawbacks
-
-1. It is a more complex solution, with complexity comes fragility.
-1. CAdvisor adds additional load to a system.
-
 ## Features
 
 * Leverage Collectd's wealth of plugins
