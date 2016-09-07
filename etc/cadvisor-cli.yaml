@@ -2,9 +2,7 @@
 # configuration options for cadvisor-cli
 # documentation: https://github.com/maier/cadvisor-collectd/wiki
 
-Host: "docker/cadvisor"
+Host: "127.0.0.1"
 
 # Port: 8080
-
-ConfigFile: "/etc/collectd/cadvisor.yaml"
-
+# ConfigFile: "/etc/collectd/cadvisor.yaml"
