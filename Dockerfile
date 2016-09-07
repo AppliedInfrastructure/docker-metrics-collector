@@ -8,7 +8,7 @@ ENV HOST="dockerhost" HOUSEKEEPING_INTERVAL_SEC="30" REPORTING_INTERVAL_SEC="60"
 
 RUN apk update && \
     apk add collectd collectd-python collectd-network collectd-write_http && \
-    apk add collectd-curl ca-certificates device-mapper python py-pip py-yaml && \
+    apk add collectd-curl device-mapper python py-pip py-yaml && \
     apk add wget bash git ca-certificates coreutils && \
     rm -rf /var/cache/apk/* && \
     update-ca-certificates && \
