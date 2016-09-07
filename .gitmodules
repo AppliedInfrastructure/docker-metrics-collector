@@ -1,3 +1,6 @@
 [submodule "docs"]
 	path = docs
-	url = https://github.com/maier/cadvisor-collectd.wiki.git
+	url = https://github.com/AppliedInfrastructure/cadvisor-collectd/wiki
+[submodule "cadvisor"]
+	path = cadvisor
+	url = https://github.com/google/cadvisor

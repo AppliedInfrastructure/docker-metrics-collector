@@ -1,6 +1,15 @@
+# OS Noise
+# --------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
 .git
 .gitignore
-etc-collectd/
-cadvisor.service
-collectd.service
+etc/
+systemd/
+examples/
