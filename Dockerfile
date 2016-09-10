@@ -41,6 +41,6 @@ RUN chown nobody /opt/collectd/cadvisor-cli && \
 
 EXPOSE 8080
 
-VOLUME [ '/etc/collectd/conf.d', '/opt/collectd/working' ]
+VOLUME [ "/etc/collectd/conf.d", "/opt/collectd/working" ]
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
