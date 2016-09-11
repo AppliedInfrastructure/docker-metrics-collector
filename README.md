@@ -1,4 +1,4 @@
-# docker-metrics-collector
+# Docker Metrics Collector
 
 Collect Docker host, container, and application metrics and push to your destination of choice using [CAdvisor](https://github.com/google/cadvisor) and [Collectd](https://github.com/collectd/collectd).  Based on the work of [Matt Maier](https://github.com/maier).
 
